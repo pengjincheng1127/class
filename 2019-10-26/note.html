@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+     <style>
+     .a{
+          border: 2px solid #000;
+     }
+     .b{
+          background: red;
+     }
+     #box{
+          width: 100px;
+          height: 100px;
+     }
+     .c{
+          display: none;
+     }
+     </style>
+</head>
+<body>
+     <!-- <div id="box" index = '123'>  </div> -->
+
+     <!-- <ul id="ul">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+
+
+     </ul> -->
+   <!--   <ul id="ul">
+          <li><a href="javascript:;" id="a">1</a></li>
+          <li><a href="javascript:;">2</a></li>
+          <li><a href="javascript:;">3</a></li>
+          <li><a href="javascript:;">4</a></li>
+          <li><a href="javascript:;">5</a></li>
+     </ul> -->
+
+    <!--  <ul id="ul">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+     </ul> -->
+     <!-- <ul id="ul"></ul> -->
+    <!--  <button id="a">a</button>
+     <button id="b">b</button>
+     <button id="c">c</button>
+     <div id="box" class="b">1</div> -->
+     <input type="text" id="txt"><button id="btn">发送</button>
+     <ul id="ul"></ul>
+     <script>
+     
+     /*
+     DOM:
+     ECMAScript : 标准语法
+          进行一些数据的操作
+     DOM - document object model 文档对象模型
+          他的出现就是通过document提供的API（接口文档）赋予开发者操作页面的能力
+
+     获取的元素是个对象，在js中，标签和对象是相映射的关系，修改对象下的属性有可能会改变标签，修改标签会修改到对象身上
+
+     DOM树 - 把页面中所有的节点组织在一个属性结构中，方便我们通过关系去操作页面
+
+          页面中的所有内容都由不同节点组成
+          元素节点 -> 标签 1 
+          注释节点 -> 注释 8
+          属性节点 ->标签上的属性 2
+          文本节点 -> 文字、回车换行 3
+          文档节点 -> document 9
+
+     查看节点的类型: 
+            nodeType
+     */
+     // console.log(box.nodeType); //1 元素节点
+
+     /*
+          查找当前元素下的所有子节点:
+            childNodes  
+     */
+     // console.log(box.childNodes);
+
+     /*
+          操作节点的内容:
+          nodeValue
+     */
+     //  box.childNodes.nodeValue = '123'
+     // console.log(box.childNodes.nodeValue );
+     /*
+          属性节点:
+               attributes
+     */
+          // console.log(box.attributes);
+          
+     /*
+          读取节点的名字:
+               nodeName
+     */
+     // console.log(box.attributes[0].nodeName);//id
+     
+     /*
+          children :找到元素下的字节点
+          firstElementChild:找到父级的第一个子元素
+          lastElementChild:找到父级的最后一个子元素
+     */
+         /*  let li = ul.children;
+          // console.log(li);
+          for(let i = 0;i<li.length;i++){
+               li[i].style.background = 'skyblue'
+          }
+
+          ul.firstElementChild.style.background = 'red'
+          ul.lastElementChild.style.background = 'green' 
+          */
+
+          /*
+          上一个兄弟节点:
+                previousElementSibling
+          下一个兄弟元素节点:
+               nextElementSibling
+          */
+          // console.log(ul.nextElementSibling);//<script><script>
+          // console.log(ul.firstElementChild.nextElementSibling);//<li>2</li>
+          // console.log(ul.firstElementChild.previousElementSibling); //null
+          // console.log(ul.lastElementChild.previousElementSibling);//<li>2</li>
+          
+          /*
+          parentNode 查找某个元素的父级节点
+          */
+          
+       /*    
+       const lis = document.querySelectorAll('a');
+         
+          lis.forEach(function(ele,index){
+                ele.onclick = function(){
+                     console.log(ele);
+                     
+                    this.parentNode.style.display = 'none';
+               }
+          }); */
+        
+          /*document是最顶部再往少找就是undefined*/ 
+         
+          /*
+          childNodes 获取某个元素下的所有子节点
+          children 获取某个元素下的所有子元素节点
+          */
+
+          /*手写children*/
+          /* function children(parent){
+               parent = typeof parent === 'string'?document.querySelector(parent):(parent.nodeType === 1?parent:null) 
+               //如果为null就说明参数是不正确的
+               if(parent === null)return '请正确传参';
+               
+               const childrens = parent.childNodes;
+               let arr = [];
+               for(let i=0;i<childrens.length;i++){
+                    if(childrens[i].nodeType === 1){
+                         arr.push(childrens[i]);
+                    }
+               }
+               return arr;
+          }
+          console.log(children('ul'));
+           */
+
+           /*
+           回流：
+           当某个元素发生几何、坐标...的变化，会使页面局部刷新，或者导致整个页面刷新
+          
+           重绘:
+               元素几何、坐标..不发生变化，只是外观、颜色、风格发生变化的时候会导致某个样式重新绘制
+          不管是回流还是重绘，都是性能杀手，尽可能少操作DOM，页面至少会回流一次，页面第一次加载的时候回流一定会重绘，而重绘不一定会导致回流
+          
+           */
+          /* for(let i =0;i<500;i++){
+               ul.innerHTML +='<li>'+i+'</li>' 
+          }//这样会使页面加载慢
+ */
+          
+          /* let html = '';
+          for(let i =0;i<500;i++){
+               html +='<li>'+i+'</li>'
+          }
+          ul.innerHTML = html
+ */
+          /*
+               属性：
+                    文本：innerText
+                    内容：innerHTML
+                    表单内容：value
+
+                    className
+
+                    页面中通过元素属性获取出来的都是字符串
+
+                    classList
+                         add 添加一个或者多个class
+                         contains 指定的class是否存在，存在就是true，否则就是false
+                         remove 删除一个或者多个class
+                         replace（旧的class，新的class）替换class
+                         toggle（开关）
+          */
+        /*   const box = document.getElementById('box');
+          console.dir(box.classList) //classList 属性返回元素的类名，作为 DOMTokenList 对象。
+          a.onclick = function(){
+               // box.classList.remove('b')
+               // box.classList.add('a')
+               box.classList.replace('b','a') //替换 b为 a
+          }
+          b.onclick = function(){
+               if(box.classList.contains('a')){ //指定class  a 是否存在 存在就移除'a'添加'b'
+                    box.classList.remove('a')
+                    box.classList.add('b');
+               }
+          }
+          c.onclick = function(){
+               // box.classList.add('b','a')
+
+               box.classList.toggle('c')
+               //点击 若隐藏就显示，显示就隐藏
+
+          } */
+
+          /*
+               创建元素:
+                    documnet.createElement('标签名')
+               让元素的末尾添加一个元素：
+                    parent.appendChild(child);
+               删除元素：
+                    parent.removeChild(删除的元素)
+          */
+          btn.onclick = function(){
+               let val = txt.value; // 变量是存储数据的
+               let li = document.createElement('li')
+               li.onclick = function(){//点击去除当前li
+                    ul.removeChild(this);
+               }
+               li.innerText =val
+               ul.appendChild(li)
+
+               txt.value = '';
+          }
+
+
+
+</script>
+</body>
+</html>
