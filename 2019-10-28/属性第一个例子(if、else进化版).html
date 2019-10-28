@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+     <style>
+          #box {
+               width: 100px;
+               /* height:100px; */
+               background: red;
+               height: 0;
+               transition: 1s;
+               position: absolute;
+               top: 50px;
+               left: 0;
+               /* display: none; */
+          }
+     </style>
+</head>
+
+<body>
+     <button id="btn">显示</button>
+     <div id="box"></div>
+     <script>
+          let onOff = true
+          document.getElementById('btn').onclick = function () {
+               if (onOff) {
+                    document.getElementById('box').style.height = '100px';
+                    document.getElementById('box').style.left = '300px';
+                    document.getElementById('box').style.background = 'blue';
+                    btn.innerText = '隐藏';
+                    onOff = false
+               } else {
+                    document.getElementById('box').style.height = '0px';
+                    document.getElementById('box').style.left = '0';
+                    document.getElementById('box').style.background = 'red';
+                    btn.innerText = '显示';
+                    onOff = true
+               }
+          }
+     </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+     <style>
+          ul {
+               width: 200px;
+               height: 300px;
+               border: 1px solid #000;
+          }
+     </style>
+</head>
+
+<body>
+     <ul id="ul">
+          <li>123456789</li>
+     </ul>
+     <input type="text" id="txt" /><button id="btn">发送</button>
+
+     <script>
+          const btn = document.getElementById('btn');
+          const ul = document.getElementById('ul');
+          const txt = document.getElementById('txt');
+
+          btn.onclick = function () {
+               let val = txt.value;
+               if (txt.value) {//判断输入框是否为空
+                    //    ul.innerHTML = ul.innerHTML + '<li>'+val+'</li>';
+                    ul.innerHTML += '<li>' + val + '</li>';
+                    txt.value = '';
+               } else {
+                    alert('输入为空')
+               }
+
+          }
+     </script>
+</body>
+
+</html>

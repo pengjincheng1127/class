@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+     <style>
+          * {
+               margin: 0;
+               padding: 0;
+          }
+
+          .active {
+               background: yellow;
+          }
+
+          #box div {
+               width: 200px;
+               height: 100px;
+               border: 1px solid #000;
+               display: none;
+          }
+
+          #box div.show {
+               display: block;
+          }
+     </style>
+</head>
+
+<body>
+     <div id="box">
+          <button class="active" index="0">按钮一</button>
+          <button index="1">按钮二</button>
+          <button index="2">按钮三</button>
+          <div class="show">11111</div>
+          <div>22222</div>
+          <div>33333</div>
+     </div>
+
+     <script>
+          /*
+    定点清除：
+     1.先把钢刺啊的class清除
+     2.再把当前的class添加上
+    */
+
+          let btns = document.querySelectorAll('button');
+          let divs = document.querySelectorAll('#box div')
+          let prev = 0; //active索引值
+
+          for (let i = 0; i < btns.length; i++) {
+               btns[i].index = i;
+               btns[i].onclick = function () {
+                    btns[prev].className = ''; //清除上一次的active
+                    divs[prev].className = '';
+                    this.className = 'active'; // 添加这次的class
+                    divs[this.index].className = 'show';
+                    prev = this.index;
+               }
+          }
+
+          //     for(let i = 0;i<btns.length;i++){
+          //          btns[i].index = i;
+          //          btns[i].onclick = function(){
+          //               btns[prev].className = '';//清除上一次的active
+          //               divs[prev].className = '';
+          //               this.className = 'active'; // 添加这次的class
+          //               divs[this.index].className = 'show';
+          //               prev = this.index;
+          //          }
+          //     }
+          for (let i =0; i < btns.length; i++) {
+               btns[i].index = i;
+               btns[i].onclick = function () {
+                    fn(this.index)
+               }
+          }
+
+
+          function fn(i) {
+               btns[prev].className = '';
+               divs[prev].className = '';
+               btns[i].className = 'active';
+               divs[i].className = 'show';
+               prev = i;
+          }
+     </script>
+</body>
+
+</html>
